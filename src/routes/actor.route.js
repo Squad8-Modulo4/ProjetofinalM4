@@ -4,7 +4,7 @@ import {
     getAllActors,
     getActorById,
     getActorByName,
-    updateName,
+    updateFirstName,
     deleteActor
 } from "../controllers/actor.controller.js";
 
@@ -14,7 +14,7 @@ actorRoute.post("/new-actor", createActor);
 actorRoute.get("/actors", getAllActors);
 actorRoute.get("/actor-find-id/:id", getActorById);
 actorRoute.get("/actor-find-name", getActorByName);
-actorRoute.patch("/fist_name-update/:id", updateName);
+actorRoute.patch("/fist_name-update/:id", updateFirstName);
 actorRoute.delete("/delete-actor/:id", deleteActor)
 
 export { actorRoute }
