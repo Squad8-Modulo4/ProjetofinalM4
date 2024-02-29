@@ -26,7 +26,7 @@ class ActorService {
         try{
             const actorId = await ActorEntity.findByPk(id);
             if(!actorId){
-                return `Usuário não encontrado`
+                return `Ator/Atriz não encontrado(a)`
             }
             return actorId;
         } catch (error) {
@@ -54,7 +54,7 @@ class ActorService {
         try{
             const actorId = await ActorEntity.findByPk(id);
             if(!actorId){
-                return `Usuário não encontrado`
+                return `Ator/Atriz não encontrado(a)`
             }
             await ActorEntity.update({ first_name: new_first_name }, {
                 where: {
@@ -72,7 +72,7 @@ class ActorService {
         try{
             const actorId = await ActorEntity.findByPk(id);
             if(!actorId){
-                return `Usuário não encontrado`
+                return `Ator/Atriz não encontrado(a)`
             }
             await ActorEntity.destroy({
                 where: {
