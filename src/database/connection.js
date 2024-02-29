@@ -1,12 +1,14 @@
 import { Sequelize } from "sequelize";
+import dotenv from "dotenv";
 
-const sequelize = new Sequelize('otgdbbzo','otgdbbzo','MVsElsgVX8bHu5nWl4wec9LSIB4Takkq', {
-    host: 'drona.db.elephantsql.com',
+dotenv.config();
+
+const sequelize = new Sequelize(process.env.DB_DATABASE,process.env.DB_USERNAME,process.env.DB_PASSWORD, {
+    host: process.env.DB_HOST,
     dialect: 'postgres',
-    port: 5432,
+    port: process.env.DB_PORT,
     logging: false
 });
-
 
 const testConnection = async () => {
     try{
