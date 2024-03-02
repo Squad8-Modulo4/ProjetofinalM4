@@ -1,10 +1,10 @@
 
 import {GenreEntity} from "../entities/Genre.entity.js";
 import {ERRORS, SUCESS} from "../shared/messages.js";
-const createGenre = async (rec,res)=>{
+const createGenre = async (req,res)=>{
     try{
     await GenreEntity.sync()
-    const {name} = rec.body
+    const {name} = req.body
     const createGenre = await GenreEntity.create({
             name
     });
