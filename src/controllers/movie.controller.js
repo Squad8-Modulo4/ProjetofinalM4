@@ -1,102 +1,56 @@
-import { MovieEntity } from "../entities/Movie.entity.js";
-import { ERRORS, SUCCESS } from "../shared/message.js";
+import { MovieService } from "../services/movie.service.js";
+import { SUCCESS } from "../shared/message.js";
+
+const instanceMovieService = new MovieService();
 
 const createMovie = async (req, res) => {
-    try {
-        await MovieEntity.sync();
-        const { title, synopsis, realease_year, rating, id_director, id_genre} = req.body;
-        const newMovie = await MovieEntity.create({
-            title, synopsis, realease_year, rating, id_director, id_genre
-        })
-        res
-        .status(201)
-        .json({
-            message: `Filme ${SUCCESS.CREATED}`
-        })
-    } catch (error) {
-        res
-        .status(500)
-        .json({
-            message: error
-        })
-    }
-}
+  const { title, synopsis, realease_year, rating, id_director, id_genre } =
+    req.body;
+  const newMovie = await instanceMovieService.creatMoviesService({
+    title,
+    synopsis,
+    realease_year,
+    rating,
+    id_director,
+    id_genre,
+  });
+  res.status(201).json({
+    message: `Filme ${SUCCESS.CREATED}`,
+    newMovie,
+  });
+};
 
 const getAllMovies = async (req, res) => {
-    try {
-        const movies = await MovieEntity.findAll();
-        res
-        .json({movies})
-    } catch (error) {
-        res
-        .status(500)
-        .json({
-            message: error
-        })
-    }
-}
+  const movies = await instanceMovieService.getAllMoviesService();
+  res.json({ movies });
+};
 
 const getMoviesByTitle = async (req, res) => {
-    try {
-        const { title } = req.body;
-        const movieTitle = await MovieEntity.findAll({
-            where: {
-                title
-            }
-        })
-        res
-        .json({movieTitle})
-    } catch (error) {
-        res
-        .status(500)
-        .json({
-            message: error
-        })
-    }
-}
+  const { title } = req.body;
+  const movieTitle = await instanceMovieService.getMoviesByTitleService(title);
+  res.json({ movieTitle });
+};
 
-const updateMovie = async (req, res) =>{
-    try{
-        const { id } = req.params;
-        const { synopsis } = req.body;
-        await MovieEntity.update({ synopsis: newSynopsis }, {
-           where: {
-            id
-           } 
-        })
-        const messageUpdate = await MovieEntity.findByPk(id)
-        res
-        .json({messageUpdate})
-    }
-    catch(error){
-        res
-        .status(500)
-        .json({
-            message: error
-        })
-    
-    }
-}
+const updateMovie = async (req, res) => {
+  const { id } = req.params;
+  const { synopsis } = req.body;
+  const movieUpdate = await instanceMovieService.updateSynopsisService(
+    id,
+    synopsis
+  );
+  res.json({ movieUpdate });
+};
 
-const deleteMovie = async (req, res) =>{
-    try {
-        const { id } = req.params;
-        await MovieEntity.destroy({
-            where: {
-                id
-            }
-        })
-        res
-        .json({message: `Filme ${SUCCESS.DELETED}`})
-    } catch (error) {
-        res
-        .status(500)
-        .json({
-            message: error
-        })
-    
-    }
-}
+const deleteMovie = async (req, res) => {
+    const { id } = req.params;
+    const movieDelete = await instanceMovieService.deleteMovieService(id)
+    res.json({ message: `Filme ${SUCCESS.DELETED}`, movieDelete });
+};
 
-
-export { createMovie, getAllMovies, getMoviesByTitle, updateMovie, deleteMovie }
+export {
+  createMovie,
+  getAllMovies,
+  getMoviesByTitle,
+  updateMovie,
+  deleteMovie,
+};
