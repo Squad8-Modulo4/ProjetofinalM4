@@ -1,6 +1,4 @@
 node_modules
 .gitignore
-package-lock.json
 .idea
-package.json
-package-lock.json
+.env
