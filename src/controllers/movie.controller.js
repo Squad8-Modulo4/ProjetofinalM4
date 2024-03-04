@@ -4,19 +4,17 @@ import { SUCCESS } from "../shared/message.js";
 const instanceMovieService = new MovieService();
 
 const createMovie = async (req, res) => {
-  const { title, synopsis, realease_year, rating, id_director, id_genre } =
-    req.body;
-  const newMovie = await instanceMovieService.creatMoviesService({
+  const { title, synopsis, release_year, rating, id_director, id_genre } = req.body;
+  const newMovie = await instanceMovieService.creatMoviesService(
     title,
     synopsis,
-    realease_year,
+    release_year,
     rating,
     id_director,
-    id_genre,
-  });
+    id_genre
+    );
   res.status(201).json({
-    message: `Filme ${SUCCESS.CREATED}`,
-    newMovie,
+    message: `Filme ${SUCCESS.CREATED}`, newMovie
   });
 };
 

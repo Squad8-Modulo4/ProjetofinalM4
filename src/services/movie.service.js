@@ -4,7 +4,7 @@ class MovieService {
   async creatMoviesService(
     title,
     synopsis,
-    realease_year,
+    release_year,
     rating,
     id_director,
     id_genre
@@ -14,10 +14,10 @@ class MovieService {
       const newMovie = await MovieEntity.create({
         title,
         synopsis,
-        realease_year,
+        release_year,
         rating,
         id_director,
-        id_genre,
+        id_genre
       });
       return newMovie;
     } catch (error) {

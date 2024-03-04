@@ -16,7 +16,7 @@ const MovieEntity = database.define('tb_movies',{
         allowNull: false
     },
     release_year:{
-        type: DataTypes.INTEGER(4),
+        type: DataTypes.INTEGER,
         allowNull: false
     },
     rating:{
