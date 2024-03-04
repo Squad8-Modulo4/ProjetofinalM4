@@ -48,18 +48,18 @@ class MovieService {
       return error;
     }
   }
-  async updateMovieService(id, synopsis) {
+  async updateMovieService(id, newSynopsis) {
     try {
       const movieId = await MovieEntity.findByPk(id);
       if (!movieId) {
         return "Filme não encontrado";
       }
       await MovieEntity.update(
-        { synopsis },
+        { synopsis: newSynopsis },
         {
           where: {
-            id,
-          },
+            id
+          }
         }
       );
       const messageUpdate = await MovieEntity.findByPk(id);

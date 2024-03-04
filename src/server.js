@@ -1,9 +1,11 @@
 import express from "express";
 import { testConnection } from "./database/connection.js";
 import { routes } from "./routes/index.route.js";
+import dontenv from 'dotenv';
+dontenv.config();
 
 const app = express();
-const port = 3333;
+const port = process.env.PORT
 
 app.use(express.json());
 app.use(routes);
