@@ -1,5 +1,4 @@
 import express from "express";
-
 import dotenv from "dotenv";
 import { routes } from "./routes/index.route.js";
 import {testConnection} from "./database/connection.js";
