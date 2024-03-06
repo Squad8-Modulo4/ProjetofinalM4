@@ -42,7 +42,7 @@ const updateMovie = async (req, res) => {
 const deleteMovie = async (req, res) => {
     const { id } = req.params;
     const movieDelete = await instanceMovieService.deleteMovieService(id)
-    res.json({ message: `Filme ${SUCCESS.DELETED}`, movieDelete });
+    res.json({ message: `Filme ${SUCESS.DELETED}`, movieDelete });
 };
 
 export {
