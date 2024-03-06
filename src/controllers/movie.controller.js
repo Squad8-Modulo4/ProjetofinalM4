@@ -1,5 +1,5 @@
 import { MovieService } from "../services/movie.service.js";
-import { SUCCESS } from "../shared/message.js";
+import { SUCESS } from "../shared/message.js";
 
 const instanceMovieService = new MovieService();
 

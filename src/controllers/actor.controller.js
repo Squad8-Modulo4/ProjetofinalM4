@@ -1,5 +1,5 @@
 import { ActorService } from "../services/actor.service.js";
-import { SUCESS } from "../shared/messages.js";
+import { SUCESS } from "../shared/message.js";
 
 const instanceActorService = new ActorService();
 

@@ -1,5 +1,5 @@
 import { DirectorEntity } from "../entities/Director.entity.js";
-import { ERRORS, SUCESS } from "../shared/messages.js" 
+import { ERRORS, SUCESS } from "../shared/message.js" 
 
 class DirectorService {
     async createDirectorService (name, nationality, dateOfBirth) {

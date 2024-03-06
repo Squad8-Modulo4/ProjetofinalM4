@@ -1,6 +1,6 @@
 
 import {GenreService} from "../services/genre.service.js";
-import {SUCESS} from "../shared/messages.js";
+import {SUCESS} from "../shared/message.js";
 
 const instanceGenreServices = new GenreService()
 

@@ -4,7 +4,7 @@ export const ERRORS = {
     USERS_NOT_FOUND: "Um dos usuarios não esta registrado, verifique e tente novamente"
 }
 
-export const SUCCESS = {
+export const SUCESS = {
     CREATED: "criado com sucesso!",
     DELETED: "deletado com sucesso!"
 }
