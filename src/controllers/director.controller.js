@@ -3,7 +3,7 @@ import { DirectorService } from "../services/director.service.js";
 const instanceDirectorService = new DirectorService();    
 const createDirector = async(req, res) => { 
     const {name, nationality, dateOfBirth} = req.body;  
-    const newDirector = await  instanceDirectorService.createDirector({name, nationality, dateOfBirth})
+    const newDirector = await  instanceDirectorService.createDirectorService(name, nationality, dateOfBirth)
     res.json({newDirector}).status(201);        
 };
 
@@ -16,13 +16,13 @@ const getAllDirectors = async (req,res) => {
 
 const getDirectorByID = async (req, res) => {
     const {id} = req.params;
-    const directorID = await instanceDirectorService.getDirectorByID(id); 
+    const directorID = await instanceDirectorService.getDirectorByIDService(id); 
     res.json({directorID});
 };
 
-const getDirectorByName = async (res,req) => {
+const getDirectorByName = async (req, res) => {
     const {name} = req.body;
-    const directorName = await instanceDirectorService.getDirectorByName(name);
+    const directorName = await instanceDirectorService.getDirectorByNameService(name);
     res.json({directorName});
 };
 
@@ -30,7 +30,7 @@ const getDirectorByName = async (res,req) => {
 const updateNameDirector = async (req,res) => {
     const {id} = req.params;
     const {newName} = req.body;
-    const updateName =  await instanceDirectorService.updateNameDirectorService(id, newName);
+    const updateName =  await instanceDirectorService.updateNameService(id, newName);
     res.json({updateName});
 };
 

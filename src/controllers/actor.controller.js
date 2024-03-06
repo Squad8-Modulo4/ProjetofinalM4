@@ -14,8 +14,8 @@ const createActor = async (req, res) => {
 }
 
 const getAllActors = async (req, res) => {
-    const users = await instanceActorService.getAllActorsService();
-    res.json({users});
+    const actors = await instanceActorService.getAllActorsService();
+    res.json({actors});
 }
 
 const getActorById = async (req, res) => {
