@@ -1,21 +1,13 @@
 import { Sequelize, DataTypes } from "sequelize";
 import { sequelize as database } from "../database/connection.js";
 
-const ActorEntity = database.define("tb_actor", {
+const DirectorEntity = database.define("tb_director", {
     id: {
         type: DataTypes.UUID,
         defaultValue: Sequelize.UUIDV4,
         primaryKey: true
     },
-    first_name: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    last_name: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    dateOfBirth: {
+    name: {
         type: DataTypes.STRING,
         allowNull: false
     },
@@ -23,14 +15,11 @@ const ActorEntity = database.define("tb_actor", {
         type: DataTypes.STRING,
         allowNull: false
     },
-    gender: {
-        type: DataTypes.CHAR(1),
-        allowNull: false
-    },
-    awards: {
+    dateOfBirth: {
         type: DataTypes.STRING,
-        allowNull: true
+        allowNull: false 
     }
-});
 
-export { ActorEntity }
+}) 
+
+export { DirectorEntity };
