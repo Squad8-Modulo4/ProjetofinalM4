@@ -14,7 +14,7 @@ const createMovie = async (req, res) => {
     id_genre
     );
   res.status(201).json({
-    message: `Filme ${SUCCESS.CREATED}`, newMovie
+    message: `Filme ${SUCESS.CREATED}`, newMovie
   });
 };
 
