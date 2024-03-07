@@ -1,5 +1,5 @@
 import { MovieService } from "../services/movie.service.js";
-import { SUCESS } from "../shared/message.js";
+import { SUCCESS } from "../shared/messages.js";
 
 const instanceMovieService = new MovieService();
 
@@ -11,10 +11,11 @@ const createMovie = async (req, res) => {
     release_year,
     rating,
     id_director,
-    id_genre
-    );
+    id_genre,
+  );
   res.status(201).json({
-    message: `Filme ${SUCESS.CREATED}`, newMovie
+    message: `Filme ${SUCCESS.CREATED}`,
+    newMovie,
   });
 };
 
@@ -31,24 +32,16 @@ const getMoviesByTitle = async (req, res) => {
 
 const updateMovie = async (req, res) => {
   const { id } = req.params;
-  const { newSynopsis } = req.body;
-  const movieUpdate = await instanceMovieService.updateMovieService(
-    id,
-    newSynopsis
-  );
+  // const { newSynopsis } = req.body;
+  // console.log(newSynopsis);
+  const movieUpdate = await instanceMovieService.updateMovieService(id, req);
   res.json({ movieUpdate });
 };
 
 const deleteMovie = async (req, res) => {
-    const { id } = req.params;
-    const movieDelete = await instanceMovieService.deleteMovieService(id)
-    res.json({ message: `Filme ${SUCESS.DELETED}`, movieDelete });
+  const { id } = req.params;
+  await instanceMovieService.deleteMovieService(id);
+  res.json({ message: `Filme ${SUCCESS.DELETED}` });
 };
 
-export {
-  createMovie,
-  getAllMovies,
-  getMoviesByTitle,
-  updateMovie,
-  deleteMovie,
-};
+export { createMovie, getAllMovies, getMoviesByTitle, updateMovie, deleteMovie };

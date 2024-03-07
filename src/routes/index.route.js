@@ -8,11 +8,11 @@ import adminRoutes from "./admin.routes.js";
 
 const routes = Router();
 
-routes.use(actorRoute)
-routes.use(movieRoute)
-routes.use(genreRouter)
-routes.use(directorRoute);
-routes.use(userRoutes);
+routes.use(actorRoute);
+routes.use(movieRoute);
+routes.use(genreRouter);
+routes.use("/user", userRoutes);
 routes.use("/admin", adminRoutes);
+routes.use(directorRoute);
 
 export { routes };

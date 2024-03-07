@@ -1,13 +1,17 @@
+import { Router } from "express";
+import {
+  createGenre,
+  getAllGeners,
+  updateGenre,
+  deleteGenre,
+} from "../controllers/genre.controller.js";
+import { authUser } from "../middlewares/user/auth/authUser.middleware.js";
 
-import { Router } from "express" ;
-import {createGenre, getAllGeners,updateGenre,deleteGenre } from "../controllers/genre.controller.js";
+const genreRouter = Router();
 
-const  genreRouter = Router()
+genreRouter.post("/new-genre", authUser, createGenre);
+genreRouter.get("/show-genres", authUser, getAllGeners);
+genreRouter.patch("/name-update/:id", authUser, updateGenre);
+genreRouter.delete("/delete-genre/:id", authUser, deleteGenre);
 
-genreRouter.post("/new-genre", createGenre);
-genreRouter.get("/show-genres", getAllGeners);
-genreRouter.patch("/name-update/:id", updateGenre);
-genreRouter.delete("/delete-genre/:id",deleteGenre);
-
-
-export {genreRouter}
+export { genreRouter };
