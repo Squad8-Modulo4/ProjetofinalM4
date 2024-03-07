@@ -33,4 +33,6 @@ userRouter
     userController.promoteSelfToAdmin,
   );
 
+userRouter.route("/uptime").head(userController.uptime);
+
 export default userRouter;

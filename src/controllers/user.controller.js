@@ -50,6 +50,11 @@ class UserController {
       message: admin,
     });
   }
+
+  static async uptime(req, res) {
+    res.set("Content-Type", "text/plain");
+    res.sendStatus(200);
+  }
 }
 
 export default UserController;
