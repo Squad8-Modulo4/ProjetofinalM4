@@ -32,9 +32,8 @@ const getMoviesByTitle = async (req, res) => {
 
 const updateMovie = async (req, res) => {
   const { id } = req.params;
-  // const { newSynopsis } = req.body;
-  // console.log(newSynopsis);
-  const movieUpdate = await instanceMovieService.updateMovieService(id, req);
+  const { newSynopsis } = req.body;
+  const movieUpdate = await instanceMovieService.updateMovieService(id, newSynopsis);
   res.json({ movieUpdate });
 };
 

@@ -14,7 +14,7 @@ class MovieService {
     });
     return newMovie;
   }
-  
+
   async getAllMoviesService() {
     const movies = await MovieEntity.findAll();
     return movies;
@@ -32,16 +32,19 @@ class MovieService {
     return movieTitle;
   }
 
-  async updateMovieService(id, req) {
+  async updateMovieService(id, newSynopsis) {
     const movieId = await MovieEntity.findByPk(id);
     if (!movieId) {
       throw new NotFoundError("Filme não encontrado.");
     }
-    await MovieEntity.update(req.body, {
-      where: {
-        id,
+    await MovieEntity.update(
+      { synopsis: newSynopsis },
+      {
+        where: {
+          id,
+        },
       },
-    });
+    );
     const messageUpdate = await MovieEntity.findByPk(id);
     return messageUpdate;
   }
