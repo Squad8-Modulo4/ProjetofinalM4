@@ -1,8 +1,8 @@
 import { Router } from "express";
-import { movieRoute } from "./movie.route.js";
-import { actorRoute } from "./actor.route.js";
+import { movieRoute } from "./movie.routes.js";
+import { actorRoute } from "./actor.routes.js";
 import { directorRoute } from "./director.routes.js";
-import { genreRouter } from "./genre.route.js";
+import { genreRouter } from "./genre.routes.js";
 import userRoutes from "./user.routes.js";
 import adminRoutes from "./admin.routes.js";
 
